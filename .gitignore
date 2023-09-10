@@ -1,0 +1,11 @@
+# ignore venv
+venv/
+
+# ignore pycache
+website/__pycache__/
+
+# ignore instance
+instance/
+
+# ignore config.py
+config.py
