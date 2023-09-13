@@ -1,20 +1,56 @@
-# from flask import Flask, render_template, url_for, request, redirect
-# from flask_sqlalchemy import SQLAlchemy
+
 import requests
+from .config import YELP_KEY
+import json
 
-# _DEBUG = True
+_DEBUG = True
+# _GEOCODING_URL = 'https://nominatim.openstreetmap.org/search?format=json&q='
 
-_YELP_URL = 'https://api.yelp.com/v3/categories/alias'
-_GEOCODING_URL = 'https://nominatim.openstreetmap.org/search?format=json&q='
+_YELP_URL = 'https://api.yelp.com/v3/businesses/search?'
 
-def send_request(text: str):
+def send_request(text: str, location: str | tuple[float, float], radius_miles: int):
     """ Sends a GET request to the Yelp Fusion API
-        to access restaurants that are within a 20 mile radius
+        to access restaurants that are within a certain radius
         from the user's current location"""
+    
+    radius_meters = min(40000, convert_miles_to_meters(radius_miles))
+    yelp_headers = {'Authorization': f'Bearer {YELP_KEY}',
+                    'accept': 'application/json'}
+
+    payload = {'categories': ['coffee', 'bubble tea'],
+               'radius': radius_meters,
+               'sort_by': 'best_match',
+               'limit': '50',
+               'price': [1, 2, 3, 4],
+               'term': text}
+
+    if type(location) == tuple:
+        payload['longitude'] = location[0]
+        payload['latitude'] = location[1]
+    else:
+        payload['location'] = location
+
+
+    if _DEBUG:
+        with open('sample.json') as json_file:
+            data = json.load(json_file)
+            # print("Type:", type(data))
+            # print(data['businesses'][0]['name'])
+    else:
+        # response = requests.get(_YELP_URL, headers=yelp_headers, params=payload)
+        # data = json.load(response.json())
+        pass
+
+    return data 
+
+
+def convert_miles_to_meters(dist: int) -> int:
+    return int(dist * 1609.34)
 
 
 
-
+# if __name__ == '__main__':
+#     send_request('Boba', 'Irvine', 5)
 
 
 

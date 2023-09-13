@@ -11,8 +11,61 @@
 
 
 {% block body %}
-<form class="search_bar" method="POST">
-    <input type="text" name="search_query" placeholder="Search..">
-    <button type="submit"><i class="fa fa-search"></i></button>
+
+
+
+<form class="input-group form-inline search_bar" method="POST">
+    <input type="text" class="form-control rounded-l form-rounded-start" name="search_query" placeholder="Search..">
+    <input type="text" class="form-control rounded-r form-rounded-end" name="location_query" placeholder="Location">
+    
+    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 </form>
+
+
+
+
+</br>
+{% if data %}
+<h1 align="center">Results</h1>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item"></li>
+</ul>
+
+{% for note in data %}
+
+{% set name = note['name'] %}
+{% set image_url = note['image_url'] %}
+{% set address = ', '.join(note['location']['display_address']) %}
+{% set phone = note['phone'] %}
+{% set url = note['url'] %}
+{% set business_id = note['id'] %}
+{% set rating = note['rating'] %}
+
+<ul class="list-group list-group-flush" id="notes">
+
+  <li class="list-group-item">
+    <h2>{{ name }}</h2>
+    <img src="{{ image_url }}" alt="Business image for {{ name }}" style="max-width: 400px; width: 100%;"  loading="lazy">
+  </br>
+  <h3>{{ address }}</h3>
+  <p>Phone: <a href="tel-{{ phone }}">{{ note['phone']  }}</a></p>
+  <p>Yelp page: <a href="{{ url }}">link</a></p>
+  <p>Rating: {{ rating }} / 5</p>
+  <div align="center">
+    <button type="submit" class="btn btn-primary rounded-3" aria-label="Save location: {{ name }}" onclick='saveNote( {{ name | tojson }}, {{ image_url | tojson }}, {{ address | tojson }}, {{ phone | tojson }}, {{ url | tojson }}, {{ rating | tojson }}, {{ business_id | tojson }} )'>Save location</button>
+  </div>
+  
+</li>
+{% endfor %}
+</ul>
+{% else %}
+
+<script>
+  sessionStorage.clear()
+</script>
+
+{% endif %}
+
+<div id="snackbar">Saved successfully</div>
+
 {% endblock %}
