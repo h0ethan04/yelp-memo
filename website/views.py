@@ -15,12 +15,12 @@ def home():
 
     if request.method == 'POST':
         search_query = request.form.get('search_query')
-        location = request.form.get('location_query')
+        location_query = request.form.get('location_query')
 
         if not search_query:
             flash('Please enter a search term', category='error')
             return render_template('index.html', user=current_user, data=None)
-        elif not location:
+        elif not location_query:
             flash('Please enter a valid location', category='error')
             return render_template('index.html', user=current_user, data=None)
         else:
@@ -28,7 +28,7 @@ def home():
                 # print(send_request('boba', 'irvine', 5000)['businesses'][0])
                 return render_template('index.html', user=current_user, data=send_request('boba', 'irvine', 5000)['businesses'])
             else:
-                return render_template('index.html', user=current_user, data=send_requeset('search_query', 'location_query', 20000)['businesses'])
+                return render_template('index.html', user=current_user, data=send_request(search_query, location_query, 20000)['businesses'])
     else:
         return render_template('index.html', user=current_user, data=None)
 
@@ -39,7 +39,8 @@ def home():
 def notes():
     """ Handles the page where saved locations and notes about those locations
         are accessible"""
-    
+    if request.method == 'POST':
+        pass
     return render_template('saved.html', user=current_user)
 
 @views.route('/save-note', methods = ['POST'])
@@ -57,6 +58,7 @@ def save_note():
         db.session.add(new_note)
         db.session.commit()
         # flash('Saved to your collection!', category='success')
+
     return jsonify({})
     
 

@@ -2,16 +2,20 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from pathlib import Path
 from flask_login import LoginManager
+# from flask_mysqldb import MySQL
 
 db = SQLAlchemy()
 DB_NAME = 'database.db'
 
+
 def create_app():
-    from .config import APP_KEY
+    from .config import APP_KEY, MYSQL_USER, MYSQL_PASSWORD, MYSQL_HOST, MYSQL_PORT, MYSQL_DB
 
     app = Flask(__name__)
+
     app.config['SECRET_KEY'] = APP_KEY
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.init_app(app)
 
     from .views import views

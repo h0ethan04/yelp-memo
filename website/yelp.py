@@ -3,7 +3,7 @@ import requests
 from .config import YELP_KEY
 import json
 
-_DEBUG = True
+_DEBUG = False
 # _GEOCODING_URL = 'https://nominatim.openstreetmap.org/search?format=json&q='
 
 _YELP_URL = 'https://api.yelp.com/v3/businesses/search?'
@@ -17,11 +17,11 @@ def send_request(text: str, location: str | tuple[float, float], radius_miles: i
     yelp_headers = {'Authorization': f'Bearer {YELP_KEY}',
                     'accept': 'application/json'}
 
-    payload = {'categories': ['coffee', 'bubble tea'],
+    payload = {#'categories': ['coffee', 'bubble tea'],
                'radius': radius_meters,
                'sort_by': 'best_match',
                'limit': '50',
-               'price': [1, 2, 3, 4],
+               #'price': [1, 2, 3, 4],
                'term': text}
 
     if type(location) == tuple:
@@ -34,12 +34,9 @@ def send_request(text: str, location: str | tuple[float, float], radius_miles: i
     if _DEBUG:
         with open('sample.json') as json_file:
             data = json.load(json_file)
-            # print("Type:", type(data))
-            # print(data['businesses'][0]['name'])
     else:
-        # response = requests.get(_YELP_URL, headers=yelp_headers, params=payload)
-        # data = json.load(response.json())
-        pass
+        response = requests.get(_YELP_URL, headers=yelp_headers, params=payload)
+        data = response.json()
 
     return data 
 

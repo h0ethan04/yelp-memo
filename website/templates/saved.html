@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
-{% block head %}
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block title %}Saved{% endblock %}
 
@@ -13,15 +12,28 @@
   {% for note in user.note %}
   
   <li class="list-group-item">
-    <h2>{{ note.name }} <button type="button" class="btn-close btn-sm" aria-label="Delete saved location {{ note.name }}" style="float: right;" onClick="deleteNote( {{ note.id }} );"></button></h2>
-    <img src="{{ note.img }}" alt="Business image for {{ note.name }}" style="max-width: 400px; width: 100%;" loading="lazy">
+    <h2>
+      {{ note.name }} 
+      <button type="button" 
+              class="btn-close btn-sm" 
+              aria-label="Delete saved location {{ note.name }}" 
+              style="float: right;" onClick="deleteNote( {{ note.id }} );">
+      </button>
+    </h2>
+    
+    <img src="{{ note.img }}" 
+         alt="Business image for {{ note.name }}" 
+         style="max-width: 400px; width: 100%;" 
+         loading="lazy">
+
     </br>
     <h3>{{ note.address }}</h3>
-  
-    <p>Phone: <a href="tel-{{ note.phone }}">{{ note.phone  }}</a></p>
-  
+    <p>Phone: <a href="tel-{{ note.phone }}">{{ note.phone }}</a></p>
     <p>Yelp page: <a href="{{ note.url }}">link</a></p>
     <p>Rating: {{ ("%.2f"|format(note.rating)).rstrip('0').rstrip('.') }} / 5</p>
+    <div class="form-group">
+      <label for="Review and "></label>
+    </div>
   </li>
 
   {% endfor %}

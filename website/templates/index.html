@@ -1,28 +1,18 @@
 {% extends 'base.html' %}
 
 
-
-{% block head %}
-
-{% endblock %}
+{% block head %}{% endblock %}
 
 {% block title %}Home{% endblock %}
 
 
-
 {% block body %}
-
-
 
 <form class="input-group form-inline search_bar" method="POST">
     <input type="text" class="form-control rounded-l form-rounded-start" name="search_query" placeholder="Search..">
     <input type="text" class="form-control rounded-r form-rounded-end" name="location_query" placeholder="Location">
-    
     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
 </form>
-
-
-
 
 </br>
 {% if data %}
@@ -59,10 +49,6 @@
 {% endfor %}
 </ul>
 {% else %}
-
-<script>
-  sessionStorage.clear()
-</script>
 
 {% endif %}
 
