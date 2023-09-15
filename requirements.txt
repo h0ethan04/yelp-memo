@@ -46,9 +46,12 @@ itsdangerous==2.1.2
 Jinja2==3.1.2
 Mako==1.2.4
 MarkupSafe==2.1.1
+mysql-connector-python==8.1.0
 mysqlclient==2.2.0
 passlib==1.7.4
+protobuf==4.21.12
 pycparser==2.21
+PyMySQL==1.1.0
 requests==2.31.0
 SQLAlchemy==2.0.20
 typing_extensions==4.7.1

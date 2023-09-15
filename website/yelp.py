@@ -3,7 +3,7 @@ import requests
 from .config import YELP_KEY
 import json
 
-_DEBUG = False
+_DEBUG = True
 # _GEOCODING_URL = 'https://nominatim.openstreetmap.org/search?format=json&q='
 
 _YELP_URL = 'https://api.yelp.com/v3/businesses/search?'
