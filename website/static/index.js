@@ -26,13 +26,36 @@ function saveNote(name, img, address, phone, url, rating, business_id) {
         setTimeout(function(){snackbar.className = snackbar.className.replace("show", ""); }, 3000);
       }
     }
-
-    //   window.location.href = '/saved'
-
+    //   window.location.href = '/saved';
     );
 }
 
+function saveText(business_id) {
 
+  text = grabNote('notes-'.concat(business_id));
+  console.log(text)
+  fetch("/save-text", {
+    method: 'POST',
+    body: JSON.stringify({business_id: business_id,
+                         text: text})
+  }).then((_res) => {
+
+    if(_res.ok) {
+      var snackbar = document.getElementById("snackbar");
+
+      snackbar.className = "show";
+
+      setTimeout(function(){snackbar.className = snackbar.className.replace("show", ""); }, 3000);
+    }
+
+    // window.location.href = '/saved';
+  })
+}
+
+function grabNote(id) {
+  var element = document.getElementById(id);
+  return element.value;
+}
 // function saveNote(name, img, address, phone, url) {
 //   console.log(name, img, address, phone, url);
 // }

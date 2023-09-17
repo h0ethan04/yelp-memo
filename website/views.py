@@ -35,13 +35,25 @@ def home():
 
 
 
-@views.route('/saved', methods=['POST', 'GET'])
+@views.route('/saved', methods=['GET'])
 def notes():
     """ Handles the page where saved locations and notes about those locations
         are accessible"""
-    if request.method == 'POST':
-        pass
     return render_template('saved.html', user=current_user)
+
+@views.route('/save-text', methods=['POST'])
+def save_text():
+    if request.method == 'POST':
+        # print('here')
+        note = json.loads(request.data)
+        # print(note)
+        if element:=Note.query.filter_by(business_id=note['business_id']).first():
+            # print(element)
+            setattr(element, 'text', note['text'])
+            # print(note['text'])
+            db.session.commit()
+            # print('committed')
+    return jsonify({})
 
 @views.route('/save-note', methods = ['POST'])
 def save_note():

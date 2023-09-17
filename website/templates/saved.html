@@ -32,10 +32,20 @@
     <p>Yelp page: <a href="{{ note.url }}">link</a></p>
     <p>Rating: {{ ("%.2f"|format(note.rating)).rstrip('0').rstrip('.') }} / 5</p>
     <div class="form-group">
-      <label for="Review and "></label>
+      <label for="notes-{{ note.business_id }}" class="form-label">Notes</label>
+      {% if note.text %}
+      {% set text = note.text %}
+      {% else %}
+      {% set text = '' %}
+      {% endif %}
+      <textarea name="notes" id="notes-{{ note.business_id }}" class="form-control" rows="3">{{ text }}</textarea>
+      </br>
+      <button class="btn btn-primary" onclick='saveText({{ note.business_id | tojson }})'>Save notes</button>
     </div>
   </li>
 
   {% endfor %}
 </ul>
+
+<div id="snackbar">Saved successfully</div>
 {% endblock %}
