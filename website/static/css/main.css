@@ -44,14 +44,10 @@
     width: 75%;
 }
 
-/* .search_bar .form-rounded-start {
-    border-radius: 0.75rem;
+label {
+    margin-bottom: 1px;
+    margin-top: 5px;
 }
-
-.search_bar .form-rounded-end {
-    border-top-right-radius: 0.75rem;
-    border-bottom-right-radius: 0.75rem;
-} */
 
 /* Style the search button */
 .search_bar button {
