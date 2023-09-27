@@ -7,7 +7,7 @@ to said locations.
 # Usage
 
 If you would like to see a preview of my website, please send me
-an email at hoea2 *at* uci *dot* edu. Begin the subject line with "Yelp-Memo"
+an email at hoea2 ***at*** uci ***dot*** edu. Begin the subject line with "Yelp-Memo"
 and include what you plan to use the preview for.
 
 If you would like to host your own version of this website:
@@ -19,7 +19,7 @@ If you would like to host your own version of this website:
 3. create a Yelp developer account to gain access to [Yelp Fusion](https://fusion.yelp.com/ "Yelp Fusion API")
 4. navigate to the website folder in your repo, and add a file named `config.py`
 5. within the `config.py` file, you will define 8 variables:
-    - `APP_KEY`: secret key (I suggest you use secrets.token_hex(16) or 
+    - `APP_KEY`: secret key (I suggest you use `secrets.token_hex(16)` or 
     another random hex generator to create one)
     - `YELP_KEY`: key from the Yelp developer account
     - `_DEBUG`: set to False to access the Yelp API upon query;
