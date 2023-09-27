@@ -12,7 +12,7 @@ and include what you plan to use the preview for.
 
 If you would like to host your own version of this website:
 
-1. clone this repo
+1. clone this repo and install dependencies according to `requirements.txt`
 2. create a MySQL database on a server that you have access to
     1. for testing purposes, I suggest downloading [MySQL Community Edition](https://dev.mysql.com/downloads/ "MySQL CE")
     2. alternatively, you can host a MySQL database on Azure or AWS and connect that database
@@ -29,6 +29,7 @@ If you would like to host your own version of this website:
     - MYSQL_USER: MySQL username used to access the database
     - MYSQL_PASSWORD: MySQL password used to access the database
     - MYSQL_DB: the name of your MySQL database
+6. run `app.py`
 
 # Sample data
 ```json
