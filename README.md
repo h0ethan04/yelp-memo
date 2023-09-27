@@ -79,7 +79,7 @@ If you would like to host your own version of this website:
         "distance": 1705.8165348965344
       }
     ],
-    "total": 65,
+    "total": 1,
     "region": {
       "center": {
         "longitude": -121.38862609863281,
