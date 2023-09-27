@@ -91,3 +91,8 @@ If you would like to host your own version of this website:
     }
   }
 ```
+
+# Changes moving forward
+- Scale up to a paid plan?
+- Implement https protocol (currently this site uses http)
+- Use latest TLS
