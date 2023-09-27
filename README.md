@@ -6,8 +6,7 @@ to said locations.
 
 # Usage
 
-If you would like to see a preview of my website, please send me
-an email at hoea2 ***at*** uci ***dot*** edu. Begin the subject line with "Yelp-Memo"
+If you would like to see a preview of my website, please send an email to hoea2 ***at*** uci ***dot*** edu. Begin the subject line with "Yelp-Memo"
 and include what you plan to use the preview for.
 
 If you would like to host your own version of this website:
