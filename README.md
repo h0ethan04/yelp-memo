@@ -19,16 +19,16 @@ If you would like to host your own version of this website:
 3. create a Yelp developer account to gain access to [Yelp Fusion](https://fusion.yelp.com/ "Yelp Fusion API")
 4. navigate to the website folder in your repo, and add a file named `config.py`
 5. within the `config.py` file, you will define 8 variables:
-    - APP_KEY: secret key (I suggest you use secrets.token_hex(16) or 
+    - `APP_KEY`: secret key (I suggest you use secrets.token_hex(16) or 
     another random hex generator to create one)
-    - YELP_KEY: key from the Yelp developer account
-    - _DEBUG: set to False to access the Yelp API upon query;
+    - `YELP_KEY`: key from the Yelp developer account
+    - `_DEBUG`: set to False to access the Yelp API upon query;
     set to True and pair with a `sample.json` file using [this format](#sample-data "Goto sample data") in order to use your app without querying the Yelp Fusion API
-    - MYSQL_HOST: MySQL host; use `localhost` if hosting a local database
-    - MYSQL_PORT: default MySQL port is 3306
-    - MYSQL_USER: MySQL username used to access the database
-    - MYSQL_PASSWORD: MySQL password used to access the database
-    - MYSQL_DB: the name of your MySQL database
+    - `MYSQL_HOST`: MySQL host; use `localhost` if hosting a local database
+    - `MYSQL_PORT`: default MySQL port is 3306
+    - `MYSQL_USER`: MySQL username used to access the database
+    - `MYSQL_PASSWORD`: MySQL password used to access the database
+    - `MYSQL_DB`: the name of your MySQL database
 6. run `app.py`
 
 # Sample data
