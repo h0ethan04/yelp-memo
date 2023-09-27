@@ -4,6 +4,10 @@ Yelp Memo is a web application designed to allow authenticated
 users to save visited locations and add notes, such as orders,
 to said locations.
 
+# Development
+
+This project was developed using Python 3.11, Flask 2.3.3, SQLAlchemy 2.0.20 and Azure MySQL cloud databases for the backend. The frontend uses Bootstrap CSS 5.2.3 and HTML 5, paired with some Javascript for toasts when adding to "saved locations" without reloading the current page. I deployed this project using Azure web services.
+
 # Usage
 
 If you would like to see a preview of my website, please send an email to hoea2 ***at*** uci ***dot*** edu. Begin the subject line with "Yelp-Memo"
